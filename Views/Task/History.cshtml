@@ -1,0 +1,124 @@
+@model TaskHistoryViewModel
+@{
+    ViewData["Title"] = "History";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card text-center">
+                <div class="card-header">
+                    <ul class="nav nav-tabs card-header-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Task">
+                                <p class="dtext">Tasks</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Task/AddTask">
+                                <p class="dtext">Add Task</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Task/AssignedTask">
+                                <p class="dtext">Assigned tasks</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Task/Friends">
+                                <p class="dtext">Friends</p>
+                            </a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link" href="/Task/AddFriend">
+                                <p class="dtext">Add friend</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/Task/History">
+                                <p class="dtext">History</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+
+                    <h3 style="padding:20px">History</h3>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr class="table-primary">
+                                    <th scope="col">Title:</th>
+                                    <th scope="col">Description:</th>
+                                    <th scope="col">Completion date:</th>
+                                    <th scope="col">Status:</th>
+                                    <th scope="col">Action:</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var t in Model.TaskHistoryList)
+                                {
+                                    var id = t.Id;
+                                    @if (t.Status == "Odrzucono")
+                                    {
+                                        <tr class="table-danger">
+                                            <td>@t.Title</td>
+
+                                            <td><a href="#" type="button" class="btn btn-link" data-toggle="modal"
+                                            data-target="#@id">
+                                                    Show
+                                                </a></td>
+                                            <td>@t.Date</td>
+                                            <td>@t.Status</td>
+                                            <td><input class="btn btn-link" type="submit" value="Delete"
+                                            onclick="DeleteTask(@t.Id)" /></td>
+                                        </tr>
+                                    }
+                                    @if (t.Status == "Wykonano")
+                                    {
+                                        <tr class="table-success">
+                                            <td>@t.Title</td>
+
+                                            <td><a href="#" type="button" class="btn btn-link" data-toggle="modal"
+                                            data-target="#@id">
+                                                    Show
+                                                </a></td>
+                                            <td>@t.Date</td>
+                                            <td>@t.Status</td>
+                                            <td><input class="btn btn-link" type="submit" value="Delete"
+                                            onclick="DeleteTask(@t.Id)" /></td>
+                                        </tr>
+                                    }
+
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+                    @foreach (var id in Model.TaskHistoryList)
+                    {
+                        <div class="modal fade" id="@id.Id" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLongTitle">@id.Title</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        @id.Description
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

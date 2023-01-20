@@ -1,0 +1,71 @@
+
+@{
+    ViewData["Title"] = "Add Friend";
+}
+
+<div class="container">
+    @if (TempData["Message"] != null)
+    {
+        <div class='alert alert-@TempData["Status"]'>
+            <div class="row justify-content-center">
+                @TempData["Message"]
+            </div>
+        </div>
+    }
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card text-center">
+                <div class="card-header">
+                    <ul class="nav nav-tabs card-header-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Task">
+                                <p class="dtext">Tasks</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Task/AddTask">
+                                <p class="dtext">Add Task</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Task/AssignedTask">
+                                <p class="dtext">Assigned tasks</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Task/Friends">
+                                <p class="dtext">Friends</p>
+                            </a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link active" href="/Task/AddFriend">
+                                <p class="dtext">Add friend</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Task/History">
+                                <p class="dtext">History</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                   <h3 style="padding:20px"> Add friend</h3>
+                    <p>To add friends you need to know their emails</p>
+                    <div class="row justify-content-center">
+                        <div class="col-md-7">
+                            @model Tasks.Models.Friend
+                            <form asp-action="AddFriendData" method="post"> 
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">Email:</span>
+                                <input asp-for="User2" class="form-control" type="email" required/>
+                            </div>
+                            <button type="submit" class="btn btn-primary me-md-2">Add</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

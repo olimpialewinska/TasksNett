@@ -1,0 +1,46 @@
+@model TaskEditViewModel
+@{
+    ViewData["Title"] = "TaksEdit";
+
+}
+
+
+@foreach (var t in Model.TaskEdit)
+{
+    <div class="container">
+    <a class="hrefWithIcon" href="~/Task">
+        <p class="icon">⬅</p>
+        <p class="text">Return</p>
+    </a>
+    <div class="row justify-content-center">
+        <div class="card-body">
+            <h3 style="padding:20px">Editing a task</h3>
+            <div class="row justify-content-center">
+                <div class="col-md-7">
+                    <form asp-action="EditTaskUpdate" id="form-action" method="post" role="form">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Title:</span>
+                            <input asp-for="Title" class="form-control" value="@t.Title" required />
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Date: </span>
+                            <input asp-for="Date" class="form-control" type="date" id="txtDate" />
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Description:</span>
+                            <input asp-for="Description" class="form-control" value="@t.Description" required />
+                        </div>
+                        <input asp-for="UserId" class="form-control" value="@User.Identity.Name" type="hidden"
+                            required />
+                        <input asp-for="Id" class="form-control" value="@t.Id" type="hidden" required />
+                        <div class="d-grid gap-5 d-md-flex justify-content-md-center">
+                            <a class="btn btn-outline-primary me-md-2" href="~/Task">Cancel</a>
+                            <button type="submit" class="btn btn-primary me-md-2">Done</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+}

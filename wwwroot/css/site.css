@@ -1,0 +1,169 @@
+﻿@import url("https://fonts.bunny.net/css?family=Nunito");
+ 
+
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+  font-family: "Nunito", sans-serif;
+  background: linear-gradient(-45deg, #e4cac2, #e4baca, #bad9e5, #c3e5dd);
+	background-size: 400% 400%;
+	animation: gradient 20s ease infinite;
+	height: 100%;
+}
+
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+
+
+
+.text-center_p-4 {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.p {
+    text-align: justify;
+    text-justify: inter-word;
+    line-height: 32px;
+}
+.z {
+    text-align: justify;
+    text-justify: inter-word;
+    line-height: 32px;
+    margin-bottom: 50px;
+}
+
+.row_align-items-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.h {
+    width: 100%;
+    text-align: center;
+    margin: 30px 0 10px;
+}
+
+.waviy {
+    display: flex;
+    justify-content: center;
+    -webkit-box-reflect: below -80px linear-gradient(transparent, rgba(28, 28, 28, 0.2));
+    font-size: 55px;
+    margin: auto;
+    margin-bottom: 60px;
+}
+.waviy span {
+    position: relative;
+    display: inline-block;
+    color: black;
+    margin: 23px;
+    text-transform: uppercase;
+    animation: waviy 1s infinite;
+    animation-delay: calc(0.1s * var(--i));
+}
+@keyframes waviy {
+    0%,
+    40%,
+    100% {
+        transform: translateY(0);
+    }
+    20% {
+        transform: translateY(-10px);
+    }
+}
+
+
+
+.buttons{
+    margin: 20px 0 0 0;
+}
+
+.carousel-indicators li,
+.carousel-control-next,
+.carousel-control-prev /*, .carousel-indicators */ {
+    filter: invert(100%);
+}
+
+.hr{
+   margin: 60px;
+}
+
+.hrefWithIcon{
+  text-decoration: none; text-decoration: none; display: flex; align-items: center; 
+  margin-bottom: 0;
+}
+
+.hrefWithIcon:hover{
+  text-decoration: none;
+}
+
+.icon{
+  font-size:30px;
+}
+
+.text{
+  margin-left: 20px;
+}
+
+.divWithIcon{
+  text-decoration: none; text-decoration: none; display: flex; align-items: center; 
+  margin: 0 15px 0 15px;
+}
+
+.divWithIcon:hover{
+  text-decoration: none;
+}
+
+.dicon{
+  font-size:20px;
+  margin: 0;
+}
+
+.dtext{
+  margin: 0;
+  margin-left: 5px;
+}
+
+@media only screen and (max-width: 600px) {
+  .divWithIcon{
+   
+    margin: 0;
+  }
+}
+
+.btn_btn-link{
+  margin: 0;
+  padding: 0;
+}

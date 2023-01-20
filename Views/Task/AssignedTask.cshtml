@@ -1,0 +1,80 @@
+@{
+    ViewData["Title"] = "Assigned Task";
+}
+
+<div class="container">
+    @if (TempData["Message"] != null)
+    {
+        <div class="alert alert-success">
+            <div class="row justify-content-center">
+                @TempData["Message"]
+            </div>
+        </div>
+    }
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card text-center">
+                <div class="card-header">
+                    <ul class="nav nav-tabs card-header-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Task">
+                                <p class="dtext">Tasks</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Task/AddTask">
+                                <p class="dtext">Add Task</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/Task/AssignedTask">
+                                <p class="dtext">Assigned tasks</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Task/Friends">
+                                <p class="dtext">Friends</p>
+                            </a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link" href="/Task/AddFriend">
+                                <p class="dtext">Add friend</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Task/History">
+                                <p class="dtext">History</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <h3 style="padding:20px"> Assigned Task</h3>
+                    <div class="row">
+                        <div class="col-sm-6 col-md-6" style="padding:10px">
+                            <div class="card">
+                                <div class="card-header" style="font-weight: 900;">{{ $task->title }}</div>
+                                <div class="card-body">
+                                <p class="fw-lighter">Dla: {{ $task->exename }}</p>
+                               
+                                    <p class="fw-lighter">Data wykonania: {{ $task->date }}</p>
+                                    
+                                   
+                                    <p class="fw-lighter">Od: {{ $task->requsername }}</p>
+                                   
+                                    <p class="card-text">{{ $task->description }}</p>
+                                    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                                        <a class="btn btn-outline-primary me-md-2" type="button" href="/editassigned/{{$task->id}}">Edytuj</a>
+                                        <a class="btn btn-outline-danger" type="button" href="/deleteassigned/{{$task->id}}">Usuń</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                       
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

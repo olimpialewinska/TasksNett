@@ -1,0 +1,93 @@
+@{
+    ViewData["Title"] = "Add Task";
+}
+
+<div class="container">
+    @if (TempData["Message"] != null)
+    {
+        <div class="alert alert-success">
+            <div class="row justify-content-center">
+                @TempData["Message"]
+            </div>
+        </div>
+    }
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card text-center">
+                <div class="card-header">
+                    <ul class="nav nav-tabs card-header-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Task">
+                                <p class="dtext">Tasks</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/Task/AddTask">
+                                <p class="dtext">Add Task</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Task/AssignedTask">
+                                <p class="dtext">Assigned tasks</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Task/Friends">
+                                <p class="dtext">Friends</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Task/AddFriend">
+                                <p class="dtext">Add friend</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Task/History">
+                                <p class="dtext">History</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <h3 style="padding:20px"> Add task</h3>
+                    <div class="row justify-content-center">
+                        <div class="col-md-7">
+                            <form id="form-action" method="post" role="form">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Title:</span>
+                                    <input class="form-control" id="txttitle" required />
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">Task for:</span>
+                                    <select class="" name="user" id="txttaskfor">
+                                        <option value="@User.Identity.Name">@User.Identity.Name</option>
+                                        @foreach (var t in Model.FriendList)
+                                        {
+                                            <option value="@t.User2">@t.User2</option>
+                                        }
+
+                                    </select>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">Date: </span>
+                                    <input class="form-control" type="date" id="txtDate" />
+                                </div>
+                                <div class="form-outline mb-4">
+                                    <textarea class="form-control" data-val="true" aria-label="Sizing example input"
+                                        aria-describedby="inputGroup-sizing-default"
+                                        data-val-length="Maximum = 2045 characters" data-val-length-max="2045" rows="3"
+                                        style="width:100%" placeholder="Descrpition..." id="txtdescription"
+                                        required></textarea>
+                                </div>
+                                <input class="form-control" value="@User.Identity.Name" type="hidden" id="txtrequser"
+                                    required />
+                                <input class="form-control" value="" type="hidden" id="txtstatus" required />
+                                <button type="submit" class="btn btn-primary me-md-2" onclick="AddTask()">Add</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

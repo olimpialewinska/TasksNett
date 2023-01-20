@@ -1,0 +1,99 @@
+@model TaskViewModel
+@{
+    ViewData["Title"] = "Taks";
+    var status = TempData["Status"];
+    
+}
+
+<div class="container">
+      @if (status != null)
+{
+    <div class="alert alert-@status">
+        <div class="row justify-content-center">
+            @TempData["Message"]
+        </div>
+    </div>
+}
+
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card text-center">
+                <div class="card-header">
+                    <ul class="nav nav-tabs card-header-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/Task">
+                                <p class="dtext">Tasks</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Task/AddTask">
+                                <p class="dtext">Add Task</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Task/AssignedTask">
+                                <p class="dtext">Assigned tasks</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Task/Friends">
+                                <p class="dtext">Friends</p>
+                            </a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link" href="/Task/AddFriend">
+                                <p class="dtext">Add friend</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Task/History">
+                                <p class="dtext">History</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <h3 style="padding:20px"> Your tasks</h3>
+                    <div class="row">
+                        @foreach( var t in Model.TaskList){
+                        <div class="col-sm-6 col-md-6" style="padding:10px">
+                            <div class="card">
+                                <div class="card-header" style="font-weight: 700;">@t.Title</div>
+                                <div class="card-body">
+                                     @if( t.Date != null){
+                                    <p class="fw-lighter">Date: @t.Date</p>
+                                     }
+                                    <p class="card-text">@t.Description</p>
+                                    <p class="card-text">Od: @t.Requser</p>
+                                    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+
+                                         @using (Html.BeginForm("Edit", "Task", FormMethod.Post))
+                                            {
+                                                @Html.AntiForgeryToken()
+                                                <input type="hidden" name="id" value="@t.Id" />
+                                                <button type="submit" class="btn btn-outline-primary me-md-2">Edit</button>
+                                            }
+                                        @using (Html.BeginForm("Done", "Task", FormMethod.Post))
+                                            {
+                                                @Html.AntiForgeryToken()
+                                                <input type="hidden" name="id" value="@t.Id" />
+                                                <button type="submit" class="btn btn-outline-success me-md-2">Done</button>
+                                            }
+                                        @using (Html.BeginForm("Dismiss", "Task", FormMethod.Post))
+                                            {
+                                                @Html.AntiForgeryToken()
+                                                <input type="hidden" name="id" value="@t.Id" />
+                                                <button type="submit" class="btn btn-outline-danger me-md-2">Dismiss</button>
+                                            }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        }
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
