@@ -1,7 +1,7 @@
 @model FriendListViewModel
 
 @{
-    ViewData["Title"] = "Friends";
+    ViewData["Title"] = "Osoby";
 }
 
 <div class="container">
@@ -20,51 +20,51 @@
                     <ul class="nav nav-tabs card-header-tabs">
                         <li class="nav-item">
                             <a class="nav-link" href="/Task">
-                                <p class="dtext">Tasks</p>
+                                <p class="dtext">Twoje zadania</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/Task/AddTask">
-                                <p class="dtext">Add Task</p>
+                                <p class="dtext">Dodaj zadanie</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/Task/AssignedTask">
-                                <p class="dtext">Assigned tasks</p>
+                                <p class="dtext">Zlecone zadania</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" href="/Task/Friends">
-                                <p class="dtext">Friends</p>
+                                <p class="dtext">Osoby</p>
                             </a>
                         </li>
                          <li class="nav-item">
                             <a class="nav-link" href="/Task/AddFriend">
-                                <p class="dtext">Add friend</p>
+                                <p class="dtext">Dodaj osobe</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/Task/History">
-                                <p class="dtext">History</p>
+                                <p class="dtext">Historia</p>
                             </a>
                         </li>
                     </ul>
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <h3>Friends</h3>
+                        <h3>Osoby</h3>
                         <table class="table table-hover">
                             <thead>
                             <tr class="table-primary">
                                     <th scope="col">Email</th>
-                                    <th scope="col">Action</th>
+                                    <th scope="col">Akcja</th>
                                 </tr>
                             </thead>
                             <tbody> 
                                 @foreach( var t in Model.FriendList){
                             <tr>
                                     <td>@t.User2</td>
-                                     <td><input class="btn btn-link" type="submit" value="Delete"
+                                     <td><input class="btn btn-link" type="submit" value="Usuń"
                                             onclick="DeleteFriend(@t.Id)" /></td>
                                 </tr>
                                 }

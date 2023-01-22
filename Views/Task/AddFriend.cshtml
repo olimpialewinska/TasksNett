@@ -1,6 +1,6 @@
 
 @{
-    ViewData["Title"] = "Add Friend";
+    ViewData["Title"] = "Dodaj osobe";
 }
 
 <div class="container">
@@ -19,39 +19,39 @@
                     <ul class="nav nav-tabs card-header-tabs">
                         <li class="nav-item">
                             <a class="nav-link" href="/Task">
-                                <p class="dtext">Tasks</p>
+                                <p class="dtext">Twoje zadania</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/Task/AddTask">
-                                <p class="dtext">Add Task</p>
+                                <p class="dtext">Dodaj zadanie</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/Task/AssignedTask">
-                                <p class="dtext">Assigned tasks</p>
+                                <p class="dtext">Zlecone zadania</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/Task/Friends">
-                                <p class="dtext">Friends</p>
+                                <p class="dtext">Osoby</p>
                             </a>
                         </li>
                          <li class="nav-item">
                             <a class="nav-link active" href="/Task/AddFriend">
-                                <p class="dtext">Add friend</p>
+                                <p class="dtext">Dodaj osobe</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/Task/History">
-                                <p class="dtext">History</p>
+                                <p class="dtext">Historia</p>
                             </a>
                         </li>
                     </ul>
                 </div>
                 <div class="card-body">
-                   <h3 style="padding:20px"> Add friend</h3>
-                    <p>To add friends you need to know their emails</p>
+                   <h3 style="padding:20px"> Dodaj osobe</h3>
+                    <p>Aby dodać osobe musisz znać jej email.</p>
                     <div class="row justify-content-center">
                         <div class="col-md-7">
                             @model Tasks.Models.Friend
@@ -60,7 +60,7 @@
                                 <span class="input-group-text">Email:</span>
                                 <input asp-for="User2" class="form-control" type="email" required/>
                             </div>
-                            <button type="submit" class="btn btn-primary me-md-2">Add</button>
+                            <button type="submit" class="btn btn-primary me-md-2">Dodaj</button>
                             </form>
                         </div>
                     </div>

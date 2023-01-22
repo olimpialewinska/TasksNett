@@ -73,7 +73,7 @@ public class TaskController : Controller
         if (user1 == friend.User2)
         {
             TempData["Status"] = $"danger";
-            TempData["Message"] = $"You can't add yourself!";
+            TempData["Message"] = $"Nie mozna dodać siebie!";
             return RedirectToAction("AddFriend");
         }
 
@@ -103,21 +103,19 @@ public class TaskController : Controller
                             }
                         }
                         TempData["Status"] = $"success";
-                        TempData["Message"] = $"Friend has been added!";
+                        TempData["Message"] = $"Osoba została dodana!";
                         return RedirectToAction("AddFriend");
                     }
                     else
                     {
                         TempData["Status"] = $"danger";
-                        TempData["Message"] = $"User does not exist!";
+                        TempData["Message"] = $"Uzytkownik nie istnieje!";
                         return RedirectToAction("AddFriend");
                     }
                 }
             }
         }
     }
-
-
 
     public IActionResult Friends()
     {
@@ -172,10 +170,74 @@ public class TaskController : Controller
             return Redirect("~/Identity/Account/Login");
         }
 
-        return View();
+        var taskListViewModel = GetAssignedTasks();
+
+        return View(taskListViewModel);
     }
 
+    internal AssignedList GetAssignedTasks()
+    {
+        List<Tasks.Models.Task> taskList = new();
+        string connectionString = GetConnectionString();
+        using (var connection = new SqliteConnection(connectionString))
+        {
+            connection.Open();
+            using (var command = connection.CreateCommand())
+            {
+                connection.Open();
+                command.CommandText = $"SELECT Id, Title, Description, Date, requser, exeuser FROM Task WHERE (requser = '{User.Identity.Name}' AND exeuser <> '{User.Identity.Name}') AND Status = '' ORDER BY Date ASC; ";
+                using (var reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            if (DateOnly.TryParse(reader.GetString(3), out DateOnly date))
+                            {
+                                taskList.Add(
+                                    new Tasks.Models.Task
+                                    {
+                                        Id = reader.GetInt32(0),
+                                        Title = reader.GetString(1),
+                                        Description = reader.GetString(2),
+                                        Date = DateOnly.Parse(reader.GetString(3)),
+                                        Requser = reader.GetString(4),
+                                        Exeuser = reader.GetString(5)
+                                    }
+                                );
+                            }
+                            else
+                            {
+                                taskList.Add(
+                                    new Tasks.Models.Task
+                                    {
+                                        Id = reader.GetInt32(0),
+                                        Title = reader.GetString(1),
+                                        Description = reader.GetString(2),
+                                        Date = null,
+                                        Requser = reader.GetString(4),
+                                        Exeuser = reader.GetString(5)
+                                    }
+                                );
+                            }
+                        }
+                    }
+                    else
+                    {
+                        return new AssignedList
+                        {
+                            TaskAssignedList = taskList
+                        };
+                    }
+                };
+            }
 
+        }
+        return new AssignedList
+        {
+            TaskAssignedList = taskList
+        };
+    }
 
     [HttpPost]
     public JsonResult DeleteTask(int id)
@@ -198,7 +260,7 @@ public class TaskController : Controller
     [HttpPost]
     public JsonResult AddTaskData(string Title,
             string Description,
-            DateOnly Date,
+            string Date,
             string Status,
             string Exeuser,
             string Requser)
@@ -236,8 +298,6 @@ public class TaskController : Controller
         return Json(new { });
     }
 
-
-
     [HttpPost]
     public IActionResult EditTaskUpdate(TaskEditViewModel task)
     {
@@ -262,13 +322,56 @@ public class TaskController : Controller
             }
         }
         TempData["Status"] = $"success";
-        TempData["Message"] = $"The task has been updated!";
+        TempData["Message"] = $"Zadanie zostało zaaktualizowane!";
 
         return RedirectToAction("Index");
     }
 
     [HttpPost]
+    public IActionResult EditTaskAssignedUpdate(TaskEditViewModel task)
+    {
+        if (!User.Identity.IsAuthenticated)
+        {
+            return Redirect("~/Identity/Account/Login");
+        }
+
+        var date = TestDate(task.Date);
+
+        string connectionString = GetConnectionString();
+        using (var connection = new SqliteConnection(connectionString))
+        {
+            connection.Open();
+            using (var command = connection.CreateCommand())
+            {
+                connection.Open();
+                command.CommandText = $"UPDATE Task SET Title = '{task.Title}', Description = '{task.Description}', Date = '{date}' WHERE Id = '{task.Id}'";
+
+                command.ExecuteNonQuery();
+
+            }
+        }
+        TempData["Status"] = $"success";
+        TempData["Message"] = $"Zadanie zostało zaaktualizowane!";
+
+        return RedirectToAction("AssignedTask");
+    }
+
+    [HttpPost]
     public IActionResult Edit(int id)
+    {
+        if (!User.Identity.IsAuthenticated)
+        {
+            return Redirect("~/Identity/Account/Login");
+        }
+
+        var taskEditViewModel = GetMyTasksToEdit(id);
+
+        return View(taskEditViewModel);
+
+    }
+
+    [HttpPost]
+    public IActionResult EditAssigned(int id)
     {
         if (!User.Identity.IsAuthenticated)
         {
@@ -297,7 +400,7 @@ public class TaskController : Controller
             }
         }
         TempData["Status"] = $"success";
-        TempData["Message"] = $"Task has been completed!";
+        TempData["Message"] = $"Zadanie zostało wykonane!";
         return RedirectToAction("Index");
     }
 
@@ -318,8 +421,27 @@ public class TaskController : Controller
             }
         }
         TempData["Status"] = $"danger";
-        TempData["Message"] = $"Task has been rejected!";
+        TempData["Message"] = $"Odrzucono zadanie!";
         return RedirectToAction("Index");
+    }
+    public IActionResult DismissAssigned(int id)
+    {
+
+        string connectionString = GetConnectionString();
+        using (var connection = new SqliteConnection(connectionString))
+        {
+            connection.Open();
+            using (var command = connection.CreateCommand())
+            {
+                connection.Open();
+                command.CommandText = $"UPDATE Task SET Status = 'Odrzucono przez nadawce' WHERE id = '{id}'";
+
+                command.ExecuteNonQuery();
+            }
+        }
+        TempData["Status"] = $"danger";
+        TempData["Message"] = $"Zadanie zostało usunięte!";
+        return RedirectToAction("AssignedTask");
     }
 
     public IActionResult History()
@@ -328,7 +450,7 @@ public class TaskController : Controller
         {
             return Redirect("~/Identity/Account/Login");
         }
-        var taskHistoryListViewModel = GetMyHistory();
+        var taskHistoryListViewModel = GetMyHistory1();
 
         return View(taskHistoryListViewModel);
     }
@@ -456,10 +578,10 @@ public class TaskController : Controller
         };
     }
 
-    internal TaskHistoryViewModel GetMyHistory()
+    internal TaskHistoryViewModel GetMyHistory1()
     {
-
-        List<Tasks.Models.Task> taskHistoryList = new();
+        List<Tasks.Models.Task> taskHistoryList = new List<Tasks.Models.Task>();
+        List<Tasks.Models.Task> taskHistoryListFriends = new List<Tasks.Models.Task>();
         string connectionString = GetConnectionString();
         using (var connection = new SqliteConnection(connectionString))
         {
@@ -467,7 +589,7 @@ public class TaskController : Controller
             using (var command = connection.CreateCommand())
             {
                 connection.Open();
-                command.CommandText = $"SELECT Id, Title, Description, Date, Status FROM Task WHERE UserId = '{User.Identity.Name}' AND Status <> '' ORDER BY Date ASC; ";
+                command.CommandText = $"SELECT Id, Title, Description, Date, Status, exeuser, requser FROM Task WHERE exeuser = '{User.Identity.Name}' AND Status <> '' ORDER BY Date ASC; ";
                 using (var reader = command.ExecuteReader())
                 {
                     if (reader.HasRows)
@@ -483,7 +605,9 @@ public class TaskController : Controller
                                         Title = reader.GetString(1),
                                         Description = reader.GetString(2),
                                         Date = DateOnly.Parse(reader.GetString(3)),
-                                        Status = reader.GetString(4)
+                                        Status = reader.GetString(4),
+                                        Exeuser = reader.GetString(5),
+                                        Requser = reader.GetString(6)
                                     }
                                 );
                             }
@@ -496,28 +620,68 @@ public class TaskController : Controller
                                         Title = reader.GetString(1),
                                         Description = reader.GetString(2),
                                         Date = null,
-                                        Status = reader.GetString(4)
+                                        Status = reader.GetString(4),
+                                        Exeuser = reader.GetString(5),
+                                        Requser = reader.GetString(6)
+
                                     }
                                 );
                             }
                         }
                     }
-                    else
+                }
+                command.CommandText = $"SELECT Id, Title, Description, Date, Status, exeuser, requser FROM Task WHERE (requser = '{User.Identity.Name}' AND exeuser <> '{User.Identity.Name}') AND Status <> '' ORDER BY Date ASC; ";
+                using (var reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
                     {
-                        return new TaskHistoryViewModel
+                        while (reader.Read())
                         {
-                            TaskHistoryList = taskHistoryList
-                        };
-                    }
-                };
-            }
+                            if (DateOnly.TryParse(reader.GetString(3), out DateOnly date))
+                            {
+                                taskHistoryListFriends.Add(
+                                    new Tasks.Models.Task
+                                    {
+                                        Id = reader.GetInt32(0),
+                                        Title = reader.GetString(1),
+                                        Description = reader.GetString(2),
+                                        Date = DateOnly.Parse(reader.GetString(3)),
+                                        Status = reader.GetString(4),
+                                        Exeuser = reader.GetString(5),
+                                        Requser = reader.GetString(6)
+                                    }
+                                );
+                            }
+                            else
+                            {
+                                taskHistoryListFriends.Add(
+                                    new Tasks.Models.Task
+                                    {
+                                        Id = reader.GetInt32(0),
+                                        Title = reader.GetString(1),
+                                        Description = reader.GetString(2),
+                                        Date = null,
+                                        Status = reader.GetString(4),
+                                        Exeuser = reader.GetString(5),
+                                        Requser = reader.GetString(6)
 
+                                    }
+    );
+                            }
+                        }
+                    }
+                }
+            }
         }
         return new TaskHistoryViewModel
         {
-            TaskHistoryList = taskHistoryList
+            TaskHistoryList = taskHistoryList,
+            TaskHistoryListFriends = taskHistoryListFriends
         };
     }
+
+
+
 
 }
 

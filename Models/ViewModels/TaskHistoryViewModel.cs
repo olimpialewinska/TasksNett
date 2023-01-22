@@ -8,5 +8,6 @@ namespace Tasks.Models.ViewModels{
 
         public Tasks.Models.Task task {get;set;}
 
+        public List<Tasks.Models.Task> TaskHistoryListFriends {get;set;}
     }
 }

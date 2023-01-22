@@ -25,7 +25,7 @@ body {
   font-family: "Nunito", sans-serif;
   background: linear-gradient(-45deg, #e4cac2, #e4baca, #bad9e5, #c3e5dd);
 	background-size: 400% 400%;
-	animation: gradient 20s ease infinite;
+	animation: gradient 70s ease infinite;
 	height: 100%;
 }
 

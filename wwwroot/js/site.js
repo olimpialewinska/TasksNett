@@ -44,13 +44,19 @@ function DeleteFriend(id){
 }
 
 function AddTask(){
+    
+    var data = document.getElementById("txtDate").value;
+    if (data == '') {
+        data="";
+    }
+    
     $.ajax({
         url: "/Task/AddTaskData",
         type: "POST",
         data: { 
             Title: document.getElementById("txttitle").value,
             Exeuser: document.getElementById("txttaskfor").value,
-            Date: document.getElementById("txtDate").value,
+            Date: data,
             Description: document.getElementById("txtdescription").value,
             Requser: document.getElementById("txtrequser").value,
             Status: document.getElementById("txtstatus").value
