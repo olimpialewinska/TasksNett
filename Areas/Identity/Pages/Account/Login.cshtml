@@ -2,7 +2,7 @@
 @model LoginModel
 
 @{
-    ViewData["Title"] = "Log in";
+    ViewData["Title"] = "Zaloguj";
 }
 <div class="row">
     <div class="col-md-6 offset-md-3">
@@ -10,10 +10,10 @@
             <div class="card-header">
                 <ul class="nav nav-tabs card-header-tabs">
                     <li class="nav-item">
-                        <a class="nav-link active" href="/Identity/Account/Login">Log In</a>
+                        <a class="nav-link active" href="/Identity/Account/Login">Zaloguj</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/Identity/Account/Register">Register</a>
+                        <a class="nav-link" href="/Identity/Account/Register">Zarejestruj</a>
                     </li>
                 </ul>
             </div>
@@ -34,23 +34,15 @@
                             <div class="form-floating mb-3">
                                 <input asp-for="Input.Password" class="form-control" autocomplete="current-password"
                                     aria-required="true" placeholder="password" />
-                                <label asp-for="Input.Password" class="form-label">Password</label>
+                                <label asp-for="Input.Password" class="form-label">Hasło</label>
                                 <span asp-validation-for="Input.Password" class="text-danger"></span>
                             </div>
-                            <div class="checkbox mb-3">
-                                <label asp-for="Input.RememberMe" class="form-label">
-                                    <input class="form-check-input" asp-for="Input.RememberMe" />
-                                    @Html.DisplayNameFor(m => m.Input.RememberMe)
-                                </label>
-                            </div>
                             <div>
-                                <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Log
-                                    in</button>
+                                <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Zaloguj</button>
                             </div>
                             <div>
                                 <p style="padding:20px">
-                                    <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new
-                                        user</a>
+                                    <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Zarejestruj jako nowy użytkownik</a>
                                 </p>
                                
                             </div>

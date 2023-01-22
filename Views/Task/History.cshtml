@@ -67,13 +67,18 @@
 
                                             <td><a href="#" type="button" class="btn btn-link" data-toggle="modal"
                                             data-target="#@id">
-                                                    Pokaz
+                                                    Pokaż
                                                 </a></td>
                                             <td>@t.Date</td>
                                             <td>@t.Status</td>
                                             <td>@t.Requser</td>
+                                            @if(t.Requser == @User.Identity.Name){
                                             <td><input class="btn btn-link" type="submit" value="Usuń"
                                             onclick="DeleteTask(@t.Id)" /></td>
+                                            }
+                                            else{
+                                            <td>-</td>
+                                            }
                                         </tr>
                                     }
                                     @if (t.Status == "Wykonano")
@@ -83,13 +88,18 @@
 
                                             <td><a href="#" type="button" class="btn btn-link" data-toggle="modal"
                                             data-target="#@id">
-                                                    Pokaz
+                                                    Pokaż
                                                 </a></td>
                                             <td>@t.Date</td>
                                             <td>@t.Status</td>
                                             <td>@t.Requser</td>
+                                            @if(t.Requser == @User.Identity.Name){
                                             <td><input class="btn btn-link" type="submit" value="Usuń"
                                             onclick="DeleteTask(@t.Id)" /></td>
+                                            }
+                                            else{
+                                            <td>-</td>
+                                            }
                                         </tr>
                                     }
                                     
@@ -100,13 +110,18 @@
 
                                             <td><a href="#" type="button" class="btn btn-link" data-toggle="modal"
                                             data-target="#@id">
-                                                    Pokaz
+                                                    Pokaż
                                                 </a></td>
                                             <td>@t.Date</td>
                                             <td>@t.Status</td>
                                             <td>@t.Requser</td>
+                                            @if(t.Requser == @User.Identity.Name){
                                             <td><input class="btn btn-link" type="submit" value="Usuń"
                                             onclick="DeleteTask(@t.Id)" /></td>
+                                            }
+                                            else{
+                                            <td>-</td>
+                                            }
                                         </tr>
                                     }
 
@@ -162,7 +177,7 @@
 
                                             <td><a href="#" type="button" class="btn btn-link" data-toggle="modal"
                                             data-target="#@id">
-                                                    Pokaz
+                                                    Pokaż
                                                 </a></td>
                                             <td>@t.Date</td>
                                             <td>@t.Status</td>
@@ -178,7 +193,7 @@
 
                                             <td><a href="#" type="button" class="btn btn-link" data-toggle="modal"
                                             data-target="#@id">
-                                                    Pokaz
+                                                    Pokaż
                                                 </a></td>
                                             <td>@t.Date</td>
                                             <td>@t.Status</td>
@@ -194,7 +209,7 @@
 
                                             <td><a href="#" type="button" class="btn btn-link" data-toggle="modal"
                                             data-target="#@id">
-                                                    Pokaz
+                                                    Pokaż
                                                 </a></td>
                                             <td>@t.Date</td>
                                             <td>Odrzucone przez Ciebie</td>

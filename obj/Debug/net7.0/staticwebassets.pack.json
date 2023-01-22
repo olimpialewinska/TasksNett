@@ -17,32 +17,36 @@
       "PackagePath": "staticwebassets/img/.DS_Store"
     },
     {
-      "Id": "/Users/olimpialewinska/Tasks/wwwroot/img/1.png",
-      "PackagePath": "staticwebassets/img/1.png"
+      "Id": "/Users/olimpialewinska/Tasks/wwwroot/img/11.png",
+      "PackagePath": "staticwebassets/img/11.png"
     },
     {
-      "Id": "/Users/olimpialewinska/Tasks/wwwroot/img/2.png",
-      "PackagePath": "staticwebassets/img/2.png"
+      "Id": "/Users/olimpialewinska/Tasks/wwwroot/img/21.png",
+      "PackagePath": "staticwebassets/img/21.png"
     },
     {
-      "Id": "/Users/olimpialewinska/Tasks/wwwroot/img/3.png",
-      "PackagePath": "staticwebassets/img/3.png"
+      "Id": "/Users/olimpialewinska/Tasks/wwwroot/img/31.png",
+      "PackagePath": "staticwebassets/img/31.png"
     },
     {
-      "Id": "/Users/olimpialewinska/Tasks/wwwroot/img/4.png",
-      "PackagePath": "staticwebassets/img/4.png"
+      "Id": "/Users/olimpialewinska/Tasks/wwwroot/img/41.png",
+      "PackagePath": "staticwebassets/img/41.png"
     },
     {
-      "Id": "/Users/olimpialewinska/Tasks/wwwroot/img/5.png",
-      "PackagePath": "staticwebassets/img/5.png"
+      "Id": "/Users/olimpialewinska/Tasks/wwwroot/img/51.png",
+      "PackagePath": "staticwebassets/img/51.png"
     },
     {
       "Id": "/Users/olimpialewinska/Tasks/wwwroot/img/asp.jpeg",
       "PackagePath": "staticwebassets/img/asp.jpeg"
     },
     {
-      "Id": "/Users/olimpialewinska/Tasks/wwwroot/img/device.png",
-      "PackagePath": "staticwebassets/img/device.png"
+      "Id": "/Users/olimpialewinska/Tasks/wwwroot/img/asp.png",
+      "PackagePath": "staticwebassets/img/asp.png"
+    },
+    {
+      "Id": "/Users/olimpialewinska/Tasks/wwwroot/img/device1.png",
+      "PackagePath": "staticwebassets/img/device1.png"
     },
     {
       "Id": "/Users/olimpialewinska/Tasks/wwwroot/js/site.js",

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "/y9tFN4X3M5nlwHdYVo+wTc32n21Uvv7PBZ296ZddpQ=",
+  "Hash": "kXsgwdR5hYribkfa6dpfgbNGLAxwHg9tHLAnxZHAFYU=",
   "Source": "Tasks",
   "BasePath": "_content/Tasks",
   "Mode": "Default",
@@ -1122,12 +1122,12 @@
       "OriginalItemSpec": "wwwroot/img/.DS_Store"
     },
     {
-      "Identity": "/Users/olimpialewinska/Tasks/wwwroot/img/1.png",
+      "Identity": "/Users/olimpialewinska/Tasks/wwwroot/img/11.png",
       "SourceId": "Tasks",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/olimpialewinska/Tasks/wwwroot/",
       "BasePath": "_content/Tasks",
-      "RelativePath": "img/1.png",
+      "RelativePath": "img/11.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1136,15 +1136,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/img/1.png"
+      "OriginalItemSpec": "wwwroot/img/11.png"
     },
     {
-      "Identity": "/Users/olimpialewinska/Tasks/wwwroot/img/2.png",
+      "Identity": "/Users/olimpialewinska/Tasks/wwwroot/img/21.png",
       "SourceId": "Tasks",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/olimpialewinska/Tasks/wwwroot/",
       "BasePath": "_content/Tasks",
-      "RelativePath": "img/2.png",
+      "RelativePath": "img/21.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1153,15 +1153,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/img/2.png"
+      "OriginalItemSpec": "wwwroot/img/21.png"
     },
     {
-      "Identity": "/Users/olimpialewinska/Tasks/wwwroot/img/3.png",
+      "Identity": "/Users/olimpialewinska/Tasks/wwwroot/img/31.png",
       "SourceId": "Tasks",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/olimpialewinska/Tasks/wwwroot/",
       "BasePath": "_content/Tasks",
-      "RelativePath": "img/3.png",
+      "RelativePath": "img/31.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1170,15 +1170,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/img/3.png"
+      "OriginalItemSpec": "wwwroot/img/31.png"
     },
     {
-      "Identity": "/Users/olimpialewinska/Tasks/wwwroot/img/4.png",
+      "Identity": "/Users/olimpialewinska/Tasks/wwwroot/img/41.png",
       "SourceId": "Tasks",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/olimpialewinska/Tasks/wwwroot/",
       "BasePath": "_content/Tasks",
-      "RelativePath": "img/4.png",
+      "RelativePath": "img/41.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1187,15 +1187,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/img/4.png"
+      "OriginalItemSpec": "wwwroot/img/41.png"
     },
     {
-      "Identity": "/Users/olimpialewinska/Tasks/wwwroot/img/5.png",
+      "Identity": "/Users/olimpialewinska/Tasks/wwwroot/img/51.png",
       "SourceId": "Tasks",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/olimpialewinska/Tasks/wwwroot/",
       "BasePath": "_content/Tasks",
-      "RelativePath": "img/5.png",
+      "RelativePath": "img/51.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1204,7 +1204,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/img/5.png"
+      "OriginalItemSpec": "wwwroot/img/51.png"
     },
     {
       "Identity": "/Users/olimpialewinska/Tasks/wwwroot/img/asp.jpeg",
@@ -1224,12 +1224,12 @@
       "OriginalItemSpec": "wwwroot/img/asp.jpeg"
     },
     {
-      "Identity": "/Users/olimpialewinska/Tasks/wwwroot/img/device.png",
+      "Identity": "/Users/olimpialewinska/Tasks/wwwroot/img/asp.png",
       "SourceId": "Tasks",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/olimpialewinska/Tasks/wwwroot/",
       "BasePath": "_content/Tasks",
-      "RelativePath": "img/device.png",
+      "RelativePath": "img/asp.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1238,7 +1238,24 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/img/device.png"
+      "OriginalItemSpec": "wwwroot/img/asp.png"
+    },
+    {
+      "Identity": "/Users/olimpialewinska/Tasks/wwwroot/img/device1.png",
+      "SourceId": "Tasks",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/olimpialewinska/Tasks/wwwroot/",
+      "BasePath": "_content/Tasks",
+      "RelativePath": "img/device1.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/img/device1.png"
     },
     {
       "Identity": "/Users/olimpialewinska/Tasks/wwwroot/js/site.js",

@@ -1,7 +1,7 @@
 ﻿@page
 @model RegisterModel
 @{
-    ViewData["Title"] = "Register";
+    ViewData["Title"] = "Zarejestruj";
 }
 
 <div class="row">
@@ -10,10 +10,10 @@
             <div class="card-header">
                 <ul class="nav nav-tabs card-header-tabs">
                     <li class="nav-item">
-                        <a class="nav-link" href="/Identity/Account/Login">Log In</a>
+                        <a class="nav-link" href="/Identity/Account/Login">Zaloguj</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="/Identity/Account/Register">Register</a>
+                        <a class="nav-link active" href="/Identity/Account/Register">Zarejestruj</a>
                     </li>
                 </ul>
             </div>
@@ -33,15 +33,15 @@
             </div>
             <div class="form-floating mb-3">
                 <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
-                <label asp-for="Input.Password">Password</label>
+                <label asp-for="Input.Password">Hasło</label>
                 <span asp-validation-for="Input.Password" class="text-danger"></span>
             </div>
             <div class="form-floating mb-3">
                 <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
-                <label asp-for="Input.ConfirmPassword">Confirm Password</label>
+                <label asp-for="Input.ConfirmPassword">Powtórz hasło</label>
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
-            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Zarejestruj</button>
         </form>
                     </section>
                     </div>
